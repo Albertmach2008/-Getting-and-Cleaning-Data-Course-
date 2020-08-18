@@ -1,23 +1,23 @@
 file<- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 if (!file.exists("./UCI HAR Dataset.zip"))
 {
-  download.file(file,'./UCI HAR Dataset.zip', mode = 'wb')
+  download.file(file,"./UCI HAR Dataset.zip", mode = "wb")
   unzip("UCI HAR Dataset.zip", exdir = getwd())
 }
 
-data <- read.csv('./UCI HAR Dataset/features.txt', header = FALSE, sep = ' ')
+data <- read.csv("./UCI HAR Dataset/features.txt", header = FALSE, sep = " ")
 data <- as.character(data[,2])
 
-train <- read.table('./UCI HAR Dataset/train/X_train.txt')
-train.act <- read.csv('./UCI HAR Dataset/train/y_train.txt', header = FALSE, sep = ' ')
-train.sub <- read.csv('./UCI HAR Dataset/train/subject_train.txt',header = FALSE, sep = ' ')
+train <- read.table("./UCI HAR Dataset/train/X_train.txt")
+train.act <- read.csv("./UCI HAR Dataset/train/y_train.txt", header = FALSE, sep = " ")
+train.sub <- read.csv("./UCI HAR Dataset/train/subject_train.txt",header = FALSE, sep = " ")
 
 join <-  data.frame(train.sub, train.act, train)
 names(join) <- c(c('subject', 'activity'),data)
 
-test <- read.table('./UCI HAR Dataset/test/X_test.txt')
-test.act <- read.csv('./UCI HAR Dataset/test/y_test.txt', header = FALSE, sep = ' ')
-test.sub <- read.csv('./UCI HAR Dataset/test/subject_test.txt', header = FALSE, sep = ' ')
+test <- read.table("./UCI HAR Dataset/test/X_test.txt")
+test.act <- read.csv("./UCI HAR Dataset/test/y_test.txt", header = FALSE, sep = " ")
+test.sub <- read.csv("./UCI HAR Dataset/test/subject_test.txt", header = FALSE, sep = " ")
 
 test.a <-  data.frame(test.sub, test.act, test)
 names(test.a) <- c(c('subject', 'activity'), data)

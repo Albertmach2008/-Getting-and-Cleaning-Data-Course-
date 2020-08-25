@@ -18,7 +18,8 @@ train.act <- read.csv("./UCI HAR Dataset/train/y_train.txt", header = FALSE, sep
 train.sub <- read.csv("./UCI HAR Dataset/train/subject_train.txt",header = FALSE, sep = " ")
 
 1-Merges the training and the test sets to create one data set.
-I used the function rbind
+
+I used the function rbind (row)
 
 data_a <- rbind(join, test.a)
 
@@ -33,19 +34,13 @@ act.a <- read.table('./UCI HAR Dataset/activity_labels.txt', header = FALSE)
 act.a <- as.character(act.a[,2])
 act.b <- act.a[data_x$activity]
 
-4-Appropriately labels the data set with descriptive variable names.
+4-Appropriately labels the data set with descriptive all the variable with another names.
 
 name <- names(data_x)
 name <- gsub("[(][)]", "", name)
 name <- gsub("^t", "TimeDomain_", name)
 name <- gsub("^f", "FrequencyDomain_", name)
-name <- gsub("Acc", "Accelerometer", name)
-name <- gsub("Gyro", "Gyroscope", name)
-name <- gsub("Mag", "Magnitude", name)
-name <- gsub("-mean-", "_Mean_", name)
-name <- gsub("-std-", "_StandardDeviation_", name)
-name <- gsub("-", "_", name)
-names(data_x) <- name
+name <- gsub("Acc", "Accelerometer", name)...
 
 5-From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 data final with the subject´means
@@ -54,4 +49,6 @@ data.tidy <- aggregate(data_x[,3:81], by = list(activity = data_x$activity, subj
 
 *Save the data in .txt
 write.table(x = data.tidy, file = "data_tidy.txt", row.names = FALSE)
+
+Finally It had 180 rows and 80 columns
 

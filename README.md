@@ -1,4 +1,4 @@
-                                                                 Getting and Cleaning Data Course
+Getting and Cleaning Data Course
                                                                  
 This repository show the use of skills in the cleaning of data base, using R stats. It´s about the human activity recognition using smartphone.
 The data base can ypu get in this url: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
